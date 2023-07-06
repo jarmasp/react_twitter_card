@@ -33,7 +33,7 @@ export function FollowCard({ children, userName, initialIsFollowing }) {
       <aside>
         <button className={buttonClassName} onClick={handleClick}>
           <span className='tw-followCard-text'>{text}</span>
-          <span className='tw-followCard-stopFollow'>follow</span>
+          <span className='tw-followCard-stopFollow'>unfollow</span>
         </button>
       </aside>
     </article>)
