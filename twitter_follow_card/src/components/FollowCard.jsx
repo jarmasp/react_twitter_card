@@ -1,10 +1,20 @@
 import './FollowCard.css'
+import { useState } from 'react'
 
 // eslint-disable-next-line react/prop-types, no-unused-vars
-export function FollowCard({ children, userName, isFolowing }) {
-  //const [isFollowing, setIsFollowing] = useState(initialIsFollowing)
+export function FollowCard({ children, userName, initialIsFollowing }) {
+  const [isFollowing, setIsFollowing] = useState(initialIsFollowing)
 
   console.log('[TwitterFollowCard] render with userName: ', userName)
+
+  const text = isFollowing ? 'following' : 'follow'
+  const buttonClassName = isFollowing
+    ? 'tw-followCard-button is-following'
+    : 'tw-followCard-button'
+
+  const handleClick = () => {
+    setIsFollowing(!isFollowing)
+  }
 
   return (
     <article className='tw-followCard'>
@@ -21,8 +31,9 @@ export function FollowCard({ children, userName, isFolowing }) {
       </header>
 
       <aside>
-        <button className="tw-followCard-button">
-          follow
+        <button className={buttonClassName} onClick={handleClick}>
+          <span className='tw-followCard-text'>{text}</span>
+          <span className='tw-followCard-stopFollow'>follow</span>
         </button>
       </aside>
     </article>)
